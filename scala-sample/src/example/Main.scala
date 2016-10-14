@@ -27,10 +27,15 @@ object Main extends App {
   def gcd(x: Int, y: Int): Int = if (y == 0) x else gcd(y, x % y)
   
   println(gcd(14, 21))
+
+  // Factorial - tail recursive version
+  def factorial(n: Int): Int = {
+    def loop(acc:Int, n: Int): Int = 
+      if(n == 0) acc
+      else loop(acc*n, n-1)
+    loop(1, n)
+  }
   
-  // Factorial
-  def factorial(n: Int): Int = if (n == 0) 1 else n * factorial(n-1)
-  
-  println(factorial(10))
+  println(factorial(5))
   
 }
