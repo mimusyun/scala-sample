@@ -2,11 +2,10 @@ package example
 
 object Main extends App {
    
-  // Newton's method
-  
   def abs(x: Double) = 
       if (x > 0) x else -x
-    
+  
+  // Newton's method
   def sqrt(x: Double) = { 
       
     def sqrtIter(guess: Double): Double = 
@@ -23,6 +22,15 @@ object Main extends App {
   }
   
   println(sqrt(2))
-  println(sqrt(4))
+  
+  // Greatest common divisor
+  def gcd(x: Int, y: Int): Int = if (y == 0) x else gcd(y, x % y)
+  
+  println(gcd(14, 21))
+  
+  // Factorial
+  def factorial(n: Int): Int = if (n == 0) 1 else n * factorial(n-1)
+  
+  println(factorial(10))
   
 }
