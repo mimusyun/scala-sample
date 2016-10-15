@@ -4,31 +4,26 @@ package example
 
 object Main extends App {
   
-  println("#Newton's method - sqrt")
-  println("sqrt(2) = " + ExamplesOfTypicalAlgorithms.sqrt(2))
-  println()
+  // move to scala test later
+  //TypicalAlgorithms.execute()
   
-  println("#Greatest Common Divisor - gcd")
-  println("gcd(14, 21) = " + ExamplesOfTypicalAlgorithms.gcd(14, 21))
-  println()
+  // HigherOrderFunction 
+//  println(HigherOrderFunction.sum_1((x: Int) => x * x * x, 1, 10))
+//  println(HigherOrderFunction.sum_2((x: Int) => x * x * x, 1, 10))
+//  println()
   
-  println("#Factorial - factorial")
-  println("factorial(5) = " + ExamplesOfTypicalAlgorithms.factorial(5))
-  println()
+  println(HigherOrderFunction.fixedPoint(x => x)(1))
+  println(HigherOrderFunction.fixedPoint(x => x/2+1)(1))
+  println(HigherOrderFunction.fixedPoint(x => x/2+2)(1))
+  println(HigherOrderFunction.fixedPoint(x => x/3+2)(1))
+  println(HigherOrderFunction.fixedPoint(x => 2 * x/3+2)(1))
   
-  println("#Pascal's Triangle")
-  for (row <- 0 to 10) {
-    for (col <- 0 to row)
-      print(ExamplesOfTypicalAlgorithms.pascal(col, row) + " ")
-      println()
-  }
-  println()
+  // Currying
+//  println(Currying.product(x => x * x)(3, 4))
+//  println(Currying.mapReduce(x => x * x, ((a, b) => a*b), 1)(3, 4))
+//  println(Currying._product(x => x * x)(3, 4))
+//  println(Currying.fact(5))
   
-  println("#Parenthese balance check")
-  println("Is () balanced? = " + ExamplesOfTypicalAlgorithms.balance("()".toList).toString())
-  println("Is )( balanced? = " + ExamplesOfTypicalAlgorithms.balance(")(".toList))
-  println("Is (()()) balanced? = " + ExamplesOfTypicalAlgorithms.balance("(()())".toList))
-  println("Is ((A)(A)(Test)) balanced? = " + ExamplesOfTypicalAlgorithms.balance("((A)(A)(Test))".toList))
-  println()
+  
   
 }
