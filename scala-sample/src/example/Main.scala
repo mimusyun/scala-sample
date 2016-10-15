@@ -21,15 +21,15 @@ object Main extends App {
     sqrtIter(1.0)
   }
   
-  println("#sqrt(2)")
-  println(sqrt(2))
+  println("#Newton's method - sqrt")
+  println("sqrt(2) = " + sqrt(2))
   println()
   
   // Greatest common divisor
   def gcd(x: Int, y: Int): Int = if (y == 0) x else gcd(y, x % y)
   
-  println("#GCD(14, 21)")
-  println(gcd(14, 21))
+  println("#Greatest Common Divisor - gcd")
+  println("gcd(14, 21) = " + gcd(14, 21))
   println()
 
   // Factorial - tail recursive version
@@ -40,10 +40,11 @@ object Main extends App {
     loop(1, n)
   }
   
-  println("#Factorial(5)")
-  println(factorial(5))
+  println("#Factorial - factorial")
+  println("factorial(5) = " + factorial(5))
   println()
   
+  // Pascal's Triangle
   def pascal(c: Int, r: Int): Int = {
     if(c==0 || r==c) 1
     else if(c<=r/2) pascal(c-1,r-1) + pascal(c,r-1)
@@ -52,10 +53,30 @@ object Main extends App {
   }
   
   println("#Pascal's Triangle")
-  for (row <- 0 to 15) {
+  for (row <- 0 to 10) {
     for (col <- 0 to row)
       print(pascal(col, row) + " ")
       println()
   }
+  println()
+  
+  // Parentheses balance check
+  def balance(chars: List[Char]): Boolean = {
+    def isBalanced(chars: List[Char], cnt: Int): Boolean = {
+      if (cnt<0) false
+      else if(chars.isEmpty) cnt == 0
+      else if(chars.head == '(') isBalanced(chars.tail, cnt+1)
+      else if(chars.head == ')') isBalanced(chars.tail, cnt-1)
+      else isBalanced(chars.tail, cnt) 
+    }
+    
+    isBalanced(chars, 0)
+  }
+  
+  println("#Parenthese balance check")
+  println("Is () balanced? = " + balance("()".toList).toString())
+  println("Is )( balanced? = " + balance(")(".toList))
+  println("Is (()()) balanced? = " + balance("(()())".toList))
+  println()
   
 }
