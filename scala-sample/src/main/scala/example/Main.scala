@@ -4,6 +4,8 @@ package example
 
 object Main extends App {
   
+  
+  
   // move to scala test later
   //TypicalAlgorithms.execute()
   
@@ -27,11 +29,11 @@ object Main extends App {
 //  println(Currying.fact(5))
   
   // Class Example
-  val x = new Rational(1, 3)
-  val y = new Rational(5, 7)
-  val z = new Rational(3, 2)
-  println(new Rational(3,10) add new Rational(1,2))
-  println(new Rational(3,10) + new Rational(1,2))
+//  val x = new Rational(1, 3)
+//  val y = new Rational(5, 7)
+//  val z = new Rational(3, 2)
+//  println(new Rational(3,10) add new Rational(1,2))
+//  println(new Rational(3,10) + new Rational(1,2))
 
   
 }
