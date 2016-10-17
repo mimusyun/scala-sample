@@ -1,5 +1,6 @@
 object Class {
-  
+  new Rational(2,3) - new Rational(1,10)          //> res0: Rational = 17/30
+  new Rational(2,3) + new Rational(1,10)          //> res1: Rational = 23/30
 }
 
 class Rational(x: Int, y: Int) {
