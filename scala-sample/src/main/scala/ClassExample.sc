@@ -1,4 +1,6 @@
-package example
+object Class {
+  
+}
 
 class Rational(x: Int, y: Int) {
 //  require(y < 0, "Denominator must be positive")
@@ -26,7 +28,7 @@ class Rational(x: Int, y: Int) {
     new Rational(numer * that.denom + that.numer * denom, denom * that.denom)
   
   def sub(that: Rational) = add(that.neg)
-  def - (that: Rational) = this + that.neg  
+  def - (that: Rational) = this + that.neg
   
   override def toString = numer + "/" + denom
   
