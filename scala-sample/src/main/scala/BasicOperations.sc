@@ -201,5 +201,17 @@ object BasicOperations {
   rightTriangles(5, 10)                           //> res101: scala.collection.immutable.IndexedSeq[(Int, Int, Int)] = Vector()
   rightTriangles(50, 24)                          //> res102: scala.collection.immutable.IndexedSeq[(Int, Int, Int)] = Vector((6,
                                                   //| 8,10))
+  // Type Annotations and Declarations
+  def revMe(s: String) = s.reverse                //> revMe: (s: String)String
+  def thereAndBack(t: String, b: String) = t + b.reverse
+                                                  //> thereAndBack: (t: String, b: String)String
+  def foo(f: Int => String => Boolean => Double) = f.apply(5)
+                                                  //> foo: (f: Int => (String => (Boolean => Double)))String => (Boolean => Doubl
+                                                  //| e)
+  val po:String = "the bear, of course!"          //> po  : String = the bear, of course!
+  val poo:Any = "the bear, of course!"            //> poo  : Any = the bear, of course!
+  
+  (1 to 5).toList                                 //> res103: List[Int] = List(1, 2, 3, 4, 5)
+  Set('a', 'b', 'c').toList                       //> res104: List[Char] = List(a, b, c)
   
  }
