@@ -1,0 +1,5 @@
+package Basics
+
+object Main {
+  
+}
