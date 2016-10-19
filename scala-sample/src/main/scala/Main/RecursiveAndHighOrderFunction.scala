@@ -92,6 +92,7 @@ object RecursiveAndHighOrderFunction extends App {
 	
 	println(quicksort(List(4,9,8,2,3,6,7,1,0)))
 
+	
 	/*
 	 * Higher Order Function
 	 */
