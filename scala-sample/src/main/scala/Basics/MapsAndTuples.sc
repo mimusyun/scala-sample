@@ -46,5 +46,22 @@ object MapsAndTuples {
   
   val (_, second, third) = t                      //> second  : Double = 3.14
                                                   //| third  : String = Red
+  
+  // partition
+  "New York".partition(_.isUpper)                 //> res7: (String, String) = (NY,ew ork)
+  
+  import scala.collection.mutable.ArrayBuffer
+  
+  val buf = ArrayBuffer(1,2,-3,4,-5,6,-7,8)       //> buf  : scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2, -3, 4, 
+                                                  //| -5, 6, -7, 8)
+  
+  buf.partition(_ < 0)                            //> res8: (scala.collection.mutable.ArrayBuffer[Int], scala.collection.mutable.A
+                                                  //| rrayBuffer[Int]) = (ArrayBuffer(-3, -5, -7),ArrayBuffer(1, 2, 4, 6, 8))
+  val symbols = Array("<", "-", ">")              //> symbols  : Array[String] = Array(<, -, >)
+  val counts = Array(2, 10, 2)                    //> counts  : Array[Int] = Array(2, 10, 2)
+  val pairs = symbols.zip(counts)                 //> pairs  : Array[(String, Int)] = Array((<,2), (-,10), (>,2))
+  for((s, n) <- pairs) println(s * n)             //> <<
+                                                  //| ----------
+                                                  //| >>
 
 }

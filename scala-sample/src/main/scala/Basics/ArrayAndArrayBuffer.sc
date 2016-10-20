@@ -59,6 +59,70 @@ object ArrayAndArrayBuffer {
   Array(1,2,3).mkString("|")                      //> res12: String = 1|2|3
   Array(1,2,3).mkString("[[", "," ,"]]")          //> res13: String = [[1,2,3]]
 	
+	// experiment
+	
+	val buf = ArrayBuffer(1,2,-3,4,-5,6,-7,8) //> buf  : scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2, -3, 4, 
+                                                  //| -5, 6, -7, 8)
+	
+	def removeAllButFirstNegative(b: ArrayBuffer[Int]) {
+		var first = true
+		var i = 0
+		while (i < b.length) {
+			if (b(i) < 0) {
+				if (first) {
+					first = false
+					i += 1
+				}
+				else b.remove(i)
+			}
+			else i += 1
+		}
+		}                                 //> removeAllButFirstNegative: (b: scala.collection.mutable.ArrayBuffer[Int])Un
+                                                  //| it
+	
+	
+	def removeAllButFirstNegative2(buf: ArrayBuffer[Int]) = {
+ 		val indexesToRemove = (for(i <- 0 until buf.length if buf(i) < 0) yield i).drop(1)
+		for (i <- indexesToRemove.reverse) buf.remove(i)
+	}                                         //> removeAllButFirstNegative2: (buf: scala.collection.mutable.ArrayBuffer[Int]
+                                                  //| )Unit
+	buf                                       //> res14: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2, -3, 4,
+                                                  //|  -5, 6, -7, 8)
+	removeAllButFirstNegative2(buf)
+	buf                                       //> res15: scala.collection.mutable.ArrayBuffer[Int] = ArrayBuffer(1, 2, -3, 4,
+                                                  //|  6, 8)
+	
+	def removeAllButFirstNegative3(buf: ArrayBuffer[Int]) = {
+		val indexesToRemove = (for (i <- 0 until buf.length if buf(i) < 0) yield i).drop(1)
+    for(i <- 0 until buf.length if !indexesToRemove.contains(i)) yield buf(i)
+	}                                         //> removeAllButFirstNegative3: (buf: scala.collection.mutable.ArrayBuffer[Int]
+                                                  //| )scala.collection.immutable.IndexedSeq[Int]
+	
+	// group by
+	val words = "Mary had a little lamb its fleece was white as snow and everywhere that Mary whent the lamb was sure to go".split(' ')
+                                                  //> words  : Array[String] = Array(Mary, had, a, little, lamb, its, fleece, was
+                                                  //| , white, as, snow, and, everywhere, that, Mary, whent, the, lamb, was, sure
+                                                  //| , to, go)
+	
+	val groupedWords = words.groupBy(_.substring(0, 1))
+                                                  //> groupedWords  : scala.collection.immutable.Map[String,Array[String]] = Map(
+                                                  //| e -> Array(everywhere), s -> Array(snow, sure), t -> Array(that, the, to), 
+                                                  //| f -> Array(fleece), a -> Array(a, as, and), M -> Array(Mary, Mary), i -> Ar
+                                                  //| ray(its), g -> Array(go), l -> Array(little, lamb, lamb), h -> Array(had), 
+                                                  //| w -> Array(was, white, whent, was))
+	
+	for ((k, v) <- groupedWords) println(k + ":" + v.mkString(","))
+                                                  //> e:everywhere
+                                                  //| s:snow,sure
+                                                  //| t:that,the,to
+                                                  //| f:fleece
+                                                  //| a:a,as,and
+                                                  //| M:Mary,Mary
+                                                  //| i:its
+                                                  //| g:go
+                                                  //| l:little,lamb,lamb
+                                                  //| h:had
+                                                  //| w:was,white,whent,was
 	
 
 }
