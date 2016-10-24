@@ -78,5 +78,39 @@ object HigherOrderListFunctionExamples {
  		(xs foldRight ys)(_ :: _)         //> concat: [T](xs: List[T], ys: List[T])List[T]
  	
  	concat(List(1,2,3,4,5),List(6,7,8,9))     //> res19: List[Int] = List(1, 2, 3, 4, 5, 6, 7, 8, 9)
+ 	
+ 	
+ 	  val n = 7                               //> n  : Int = 7
+  (1 until n) map (i => (1 until i) map (j => (i, j)))
+                                                  //> res20: scala.collection.immutable.IndexedSeq[scala.collection.immutable.Ind
+                                                  //| exedSeq[(Int, Int)]] = Vector(Vector(), Vector((2,1)), Vector((3,1), (3,2))
+                                                  //| , Vector((4,1), (4,2), (4,3)), Vector((5,1), (5,2), (5,3), (5,4)), Vector((
+                                                  //| 6,1), (6,2), (6,3), (6,4), (6,5)))
+  (1 until n) flatMap (i => (1 until i) map (j => (i, j)))
+                                                  //> res21: scala.collection.immutable.IndexedSeq[(Int, Int)] = Vector((2,1), (3
+                                                  //| ,1), (3,2), (4,1), (4,2), (4,3), (5,1), (5,2), (5,3), (5,4), (6,1), (6,2), 
+                                                  //| (6,3), (6,4), (6,5))
+       
+  def isPrime(n: Int) = (2 until n) forall (n % _ != 0)
+                                                  //> isPrime: (n: Int)Boolean
+  (1 until n) flatMap (i =>
+  	(1 until i) map (j => (i, j))) filter (pair => isPrime(pair._1 + pair._2))
+                                                  //> res22: scala.collection.immutable.IndexedSeq[(Int, Int)] = Vector((2,1), (3
+                                                  //| ,2), (4,1), (4,3), (5,2), (6,1), (6,5))
+  
+  
+  case class Person(name: String, age: Int)
+  
+  val persons = List(Person("shunichiro", 24), Person("john", 18), Person("????", 50))
+                                                  //> persons  : List[Main.HigherOrderListFunctionExamples.Person] = List(Person(
+                                                  //| shunichiro,24), Person(john,18), Person(????,50))
+  for( p <- persons if p.age > 20 ) yield p.name  //> res23: List[String] = List(shunichiro, ????)
+  persons filter (p => p.age > 20) map (p => p.name)
+                                                  //> res24: List[String] = List(shunichiro, ????)
+       
+  def scalarProduct(xs: List[Double], ys: List[Double])
+  	= for( (x, y) <- (xs zip ys)) yield x * y //> scalarProduct: (xs: List[Double], ys: List[Double])List[Double]
+  
+  scalarProduct(List(3,4,5), List(7,8,9))         //> res25: List[Double] = List(21.0, 32.0, 45.0)
   
 }
