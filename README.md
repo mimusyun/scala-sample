@@ -1,5 +1,5 @@
 # scala-sample
-Scala sample code for myself
+Scala sample code & playground for myself
 
 ## Scala Doc
 http://www.scala-lang.org/api/current/#package
