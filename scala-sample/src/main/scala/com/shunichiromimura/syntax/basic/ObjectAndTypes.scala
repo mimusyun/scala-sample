@@ -1,4 +1,4 @@
-package Main
+package com.shunichiromimura.syntax.basic
 
 object ObjectAndTypes extends App {
   

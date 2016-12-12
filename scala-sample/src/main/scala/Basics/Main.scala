@@ -1,5 +1,0 @@
-package Basics
-
-object Main {
-  
-}
